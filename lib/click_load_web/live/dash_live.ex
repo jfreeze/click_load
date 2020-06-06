@@ -11,10 +11,11 @@ defmodule ClickLoadWeb.DashLive.Main do
 
   @impl true
   def mount(_params, _session, socket) do
+    IO.puts("mounting ..........")
     {:ok, assign(socket, dash: %__MODULE__{}, dashes: @dashes)}
   end
 
-  @inpl true
+  @impl true
   def handle_params(params, _url, socket) do
     IO.inspect(params)
     {:noreply, socket}
