@@ -1,6 +1,14 @@
+<%= if @dash do %>
+<div>The selected item is <%= @dash.name %> with id <%= @dash.id %></div>
+<% else %>
+No selection
+<% end %>
+
 <div>
   <%= live_patch "Index", to: Routes.dash_main_path(@conn, :index) %>
 </div>
+<%= for dash <- @dashes do %>
 <div>
-  <%= live_patch @dash.name, to: Routes.dash_main_path(@conn, :show, @dash) %>
+  <%= live_patch "#{dash.id} #{dash.name}", to: Routes.dash_main_path(@conn, :show, dash) %>
 </div>
+<% end %>
